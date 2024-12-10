@@ -1,0 +1,140 @@
+/* Reseta margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom, pink, red); /* Fundo gradiente */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fonte divertida */
+    text-align: center;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px; /* Para evitar corte em telas pequenas */
+}
+
+.titulo {
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    animation: aparecer 2s ease-in-out forwards, piscar 1.5s infinite;
+    margin-bottom: 20px;
+}
+
+.foto {
+    width: 80%; /* Reduz o tamanho da imagem em telas pequenas */
+    max-width: 300px; /* Garante que não fique muito grande */
+    height: auto; /* Mantém a proporção */
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    animation: zoom 1.5s ease-in-out forwards;
+}
+
+/* Corações animados */
+.coracoes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.coracoes::before, .coracoes::after {
+    content: "❤️";
+    position: absolute;
+    font-size: 2rem;
+    animation: subir 3s infinite;
+}
+
+.coracoes::before {
+    left: 20%;
+    animation-delay: 0.5s;
+}
+
+.coracoes::after {
+    left: 80%;
+    animation-delay: 1s;
+}
+
+/* Animações */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes piscar {
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes subir {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-20%);
+        opacity: 1;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 2rem;
+    }
+
+    .foto {
+        width: 70%;
+        max-width: 250px;
+    }
+
+    .coracoes::before, .coracoes::after {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulo {
+        font-size: 1.8rem;
+    }
+
+    .foto {
+        width: 90%;
+        max-width: 200px;
+    }
+
+    .coracoes::before, .coracoes::after {
+        font-size: 1.2rem;
+    }
+}
